@@ -1,0 +1,13 @@
+services: 
+  backend:
+    build: ./GroceryListApi/.
+    ports:
+      - "8000:8000"
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - "${PWD}/GroceryListApi/:${PWD}/GroceryListApi/" # to ensure the sql file is persistant to disk 
+  frontend:
+    build: ./grocery-list/.
+    ports:
+      - "3000:3000"
+    command: npm start
